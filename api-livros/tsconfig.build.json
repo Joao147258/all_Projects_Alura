@@ -5,6 +5,7 @@
     "test",
     "dist",
     "**/*spec.ts",
-    "src/generated"
+    "src/generated",
+    "prisma"
   ]
 }
