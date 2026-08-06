@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  moduleFormat = "esm"
+  output       = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Autor {
+  id            Int     @id @default(autoincrement())
+  nome          String
+  nacionalidade String?
+  livros        Livro[] // relação reversa (virtual)
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
+
+model Livro {
+  id            Int    @id @default(autoincrement())
+  titulo        String
+  autorId       Int // FK física
+  autor         Autor  @relation(fields: [autorId], references: [id])
+  editora       String
+  numeroPaginas Int?
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+}
