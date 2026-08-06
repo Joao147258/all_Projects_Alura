@@ -7,7 +7,7 @@ export class PrismaService
     extends PrismaClient
     implements OnModuleInit, OnModuleDestroy {
     constructor() {
-        const adapter = new PrismaLibSql({ url: 'file:./prisma/dev.db' });
+        const adapter = new PrismaLibSql({ url: 'file:./dev.db' });
         super({ adapter });
     }
 

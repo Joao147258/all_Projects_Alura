@@ -1,18 +1,24 @@
 /*
+DTO compartilhado entre criação (POST) e busca (GET).
+- POST /autores: nome é obrigatório, nacionalidade opcional
+- GET /autores/busca: ambos são opcionais (filtros por query string)
+
 model Autor {
   id            Int      @id @default(autoincrement())
   nome          String
   nacionalidade String?
-  livros        Livro[]                             // relação reversa (virtual)
-
-  criadoEm      DateTime @default(now())
-  atualizadoEm  DateTime @updatedAt
+  livros        Livro[]
 }
-
 */
 
+import { IsOptional, IsString } from 'class-validator';
+
 export class CreateModAutorDto {
-    nome!: string;
-    nacionalidade!: string;
-    livro!: string;
+  @IsOptional()
+  @IsString()
+  nome?: string;
+
+  @IsOptional()
+  @IsString()
+  nacionalidade?: string;
 }
