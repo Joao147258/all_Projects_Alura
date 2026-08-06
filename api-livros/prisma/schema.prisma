@@ -5,7 +5,6 @@
 
 generator client {
   provider     = "prisma-client"
-  moduleFormat = "esm"
   output       = "../generated/prisma"
 }
 
